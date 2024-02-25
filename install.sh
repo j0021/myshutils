@@ -29,9 +29,12 @@
 INSTALL_PATH="$HOME/myshutils"
 PATH_CONFIG_FLAG="$HOME/.myshutilspath"
 
+function print_log {
+    echo "myshutils: $1"
+}
 
 function copy_scripts {
-    echo "myshutils: installing scripts to $INSTALL_PATH"
+    print_log "installing scripts to $INSTALL_PATH"
     cp -v ./scripts/*.sh $INSTALL_PATH
     chmod +x $INSTALL_PATH/*.sh
 }
@@ -39,9 +42,9 @@ function copy_scripts {
 function config_path {
     if [ -f $PATH_CONFIG_FLAG ]
     then
-        echo "myshutils: PATH already set, skipping..."
+        print_log "PATH already set, skipping..."
     else
-        echo "myshutils: configuring PATH on $HOME/.$1"
+        print_log "configuring PATH on $HOME/.$1"
         echo "PATH=$PATH:$INSTALL_PATH; export PATH" >> "$HOME/.$1"
         touch $PATH_CONFIG_FLAG
     fi 
@@ -66,4 +69,4 @@ then
     config_path bashrc
 fi
 
-echo "myshutils: done installing scripts!"
+print_log "done installing scripts!"
