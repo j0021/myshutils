@@ -33,7 +33,7 @@ then
     FILES=`cat .pyver | grep files | cut -d "=" -f 2`
 else
     echo "error: .pyver config not found"
-    echo "please add it in the current dir with 'files=' config with the files that need modification (separated by commas)" 
+    echo "please add it in the current dir with 'files=' config with the files that need modification (separated by spaces)"
     exit 1
 fi
 
